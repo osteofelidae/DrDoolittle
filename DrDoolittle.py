@@ -1,15 +1,25 @@
 KEYWORD = "dog"
 RESPONSE = "WOOF"
 
+configfile = open("settings.config")
+configlist = configfile.readlines()
+configfile.close()
+
+print(configlist)
+
+CLIENTID = configlist[0][:len(configlist[0])-1]
+CLIENTSECRET = configlist[1][:len(configlist[1])-1]
+USERAGENT = configlist[2][:len(configlist[2])-1]
+USERNAME = configlist[3]
 
 import praw
 
 reddit = praw.Reddit(
-    client_id="5sZupUPFN4GLN72MIxDhGg",
-    client_secret="jLtqBp3Xh_NFKj_B0pBhjYav_5n3cg",
+    client_id=CLIENTID,
+    client_secret=CLIENTSECRET,
     password=input("Input password... "),
-    user_agent="WoofBot",
-    username="FindingDog"
+    user_agent=USERAGENT,
+    username=USERNAME
 )
 
 try:
