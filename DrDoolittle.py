@@ -39,14 +39,14 @@ try:
         postcontents = submission.selftext
         posttitle = submission.title
         
-        if ("dog" in postcontents.lower()) or ("dog" in posttitle.lower()):
+        if (KEYWORD in postcontents.lower()) or (KEYWORD in posttitle.lower()):
             
             print("Found keyword " + KEYWORD + " in post titled: " + submission.title)
             
             commentidlist = submission.comments.list()
             commented = False
             for comment in commentidlist:
-                if comment.author == "osteofelidae":
+                if comment.author == USERNAME:
                     commented = True
             if commented == False:
                 submission.reply(RESPONSE)
