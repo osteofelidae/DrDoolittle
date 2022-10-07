@@ -5,11 +5,11 @@ RESPONSE = "WOOF"
 import praw
 
 reddit = praw.Reddit(
-    client_id="oghQpvu_5ScijfsD5rbTJA",
-    client_secret="b5TGrTBn_wzoqQJqOzifRoPEydYWvA",
+    client_id="5sZupUPFN4GLN72MIxDhGg",
+    client_secret="jLtqBp3Xh_NFKj_B0pBhjYav_5n3cg",
     password=input("Input password... "),
-    user_agent="DrDoolittle",
-    username="osteofelidae"
+    user_agent="WoofBot",
+    username="FindingDog"
 )
 
 try:
