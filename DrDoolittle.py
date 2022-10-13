@@ -1,3 +1,5 @@
+import time
+
 KEYWORD = "dog"
 RESPONSE = "WOOF"
 count = 0
@@ -38,6 +40,7 @@ except:
 try:
     postlist = subreddit.new()
     for submission in postlist:
+        time.sleep(0.035)
         postcontents = submission.selftext
         posttitle = submission.title
         
@@ -48,11 +51,12 @@ try:
             commentidlist = submission.comments.list()
             commented = False
             for comment in commentidlist:
-                count1 += 1
                 if comment.author == USERNAME:
                     commented = True
             if commented == False:
+                count1 += 1
                 submission.reply(RESPONSE)
+        
 except:
     print("Access error.")
 
@@ -69,10 +73,10 @@ try:
             commentidlist = submission.comments.list()
             commented = False
             for comment in commentidlist:
-                count1 += 1
                 if comment.author == USERNAME:
                     commented = True
             if commented == False:
+                count1 += 1
                 submission.reply(RESPONSE)
 except:
     print("Access error.")
@@ -90,12 +94,12 @@ try:
             commentidlist = submission.comments.list()
             commented = False
             for comment in commentidlist:
-                count1 += 1
                 if comment.author == USERNAME:
                     commented = True
             if commented == False:
+                count1 += 1
                 submission.reply(RESPONSE)
 except:
     print("Access error.")
 
-print("Complete. Found " + str(count) + " dogs, commented " + str(count1) + "times.")
+print("Complete. Found " + str(count) + " dogs, commented " + str(count1) + " times.")
