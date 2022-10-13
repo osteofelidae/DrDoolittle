@@ -1,5 +1,6 @@
 KEYWORD = "dog"
 RESPONSE = "WOOF"
+count = 0
 
 configfile = open("settings.config")
 configlist = configfile.readlines()
@@ -40,7 +41,7 @@ try:
         posttitle = submission.title
         
         if (KEYWORD in postcontents.lower()) or (KEYWORD in posttitle.lower()):
-            
+            count += 1
             print("Found keyword " + KEYWORD + " in post titled: " + submission.title)
             
             commentidlist = submission.comments.list()
@@ -52,3 +53,25 @@ try:
                 submission.reply(RESPONSE)
 except:
     print("Access error.")
+
+try:
+    postlist = subreddit.top()
+    for submission in postlist:
+        postcontents = submission.selftext
+        posttitle = submission.title
+        
+        if (KEYWORD in postcontents.lower()) or (KEYWORD in posttitle.lower()):
+            count += 1
+            print("Found keyword " + KEYWORD + " in post titled: " + submission.title)
+            
+            commentidlist = submission.comments.list()
+            commented = False
+            for comment in commentidlist:
+                if comment.author == USERNAME:
+                    commented = True
+            if commented == False:
+                submission.reply(RESPONSE)
+except:
+    print("Access error.")
+
+print("Complete. Found " + str(count) + " dogs.")
