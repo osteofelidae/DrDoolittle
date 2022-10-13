@@ -1,23 +1,31 @@
 import string
-import time
 
-mainlist = [0]
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-for x in range (9999999999999):
+numlist = [0]
+for number in range(999999999999):
     outstr = ""
-    time.sleep(0.01)
-    numlist = []
-    exponent = 1
-    samplenum = x
-    while 26**exponent < x:
-        exponent += 1
-    exponent -= 1
-    while exponent >= 0:
-        print(samplenum/(26**exponent))
-        numlist.append(int(samplenum/(26**exponent)))
-        samplenum = samplenum % (26**(exponent))
-        exponent -= 1
-    for item in numlist:
-        print(item)
-        outstr += str((string.ascii_lowercase[item]))
+    for index in numlist:
+        outstr += string.ascii_lowercase[index]
     print(outstr)
+    if numlist[-1] == 25:
+        numlist[-1] = 0
+        carry = True
+    else:
+        numlist[-1] += 1
+        carry = False
+        
+    reference = len(numlist)-2
+    while carry == True:
+        if reference >= 0:
+            if numlist[reference] < 25:
+                numlist[reference] += 1
+                carry = False
+            else:
+                numlist[reference] = 0
+                carry = True
+        elif reference < 0:
+            numlist.insert(0,0)
+            carry = False
+        reference -= 1
+    
