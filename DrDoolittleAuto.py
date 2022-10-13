@@ -25,7 +25,8 @@ reddit = praw.Reddit(
 )
 
 try:
-    print("Logged in as " + reddit.user.me())
+    user = reddit.user.me()
+    print("Logged in as " + user)
 except:
     print("Authentication error.")
 

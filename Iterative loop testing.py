@@ -1,24 +1,23 @@
 import string
+import time
 
 mainlist = [0]
-print(string.ascii_lowercase[1])
-while True:
-    mainstr = ""
-    index = len(mainlist)-1
-    for letter in mainlist:
-        mainstr += (string.ascii_lowercase[letter])
-    print(mainstr)
-    
-    if mainlist[index] < 26:
-        mainlist[index] += 1
-    else:
-        carry = False
-        for x in range(index):
-            if carry == True:
-                mainlist[index-x] += 1
-            if mainlist[index-x] < 26:
-                carry == False
-                mainlist[index-x] += 1
-            else:
-                carry == True
-                mainlist[index-x] = 0
+
+for x in range (9999999999999):
+    outstr = ""
+    time.sleep(0.01)
+    numlist = []
+    exponent = 1
+    samplenum = x
+    while 26**exponent < x:
+        exponent += 1
+    exponent -= 1
+    while exponent >= 0:
+        print(samplenum/(26**exponent))
+        numlist.append(int(samplenum/(26**exponent)))
+        samplenum = samplenum % (26**(exponent))
+        exponent -= 1
+    for item in numlist:
+        print(item)
+        outstr += str((string.ascii_lowercase[item]))
+    print(outstr)
